@@ -6,16 +6,8 @@
   <title>Praj - Portfolio</title>
 
   <!-- Bootstrap 5 CSS -->
-  <link 
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" 
-  rel="stylesheet" 
-  integrity="sha384-+yXhJbug9eUfYV94oxHZexlQElfqa4Qfezl+5t7p1a1R4pGk6QP65Y4YKERU91h5" 
-  crossorigin="anonymous">
-  <script 
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-pC2iETcXtNIb/AzV+WBJj6zoxcSOEka1lvY4F+Yr8WudQS888DlrA/TDmU5GlpjC" 
-  crossorigin="anonymous">
-</script>
+  <link href="https://bootswatch.com/5/quartz/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <style>
     body {
@@ -33,111 +25,175 @@
       text-align: center;
     }
   </style>
+  <style>
+    .nav-link:hover {
+      background-color: #d017d0 !important;
+      color: white !important;
+      transition: background-color 0.3s ease;
+    }
+    .nav-link.active {
+      background-color: #5410e6 !important;
+      color: white !important;
+    }
+  </style>
+  
 </head>
 <body onload="setupPage()">
+    <div class="container" style="background-color: transparent;">
+        <div class="text-center mb-5">
+          <img src="https://github.com/AlpinistTech/Waph-AlpinistTech.github.io/blob/124e86888039aa0358496b4fdf390e1afe2c6102/Images/headshot.JPG" alt="Headshot" class="profile-pic mb-3">
+          <h1 class="display-5" style="font-weight: bold; text-transform: uppercase; font-size: 3rem; font-style: italic;">
+            PRAJWAL BHEMAGONDANAHALLI SRINIVAS
+          </h1>
+                    
+          <!-- Email with show/hide -->
+          <p class="lead mb-2" style="font-weight: bold;font-size: 0.8rem;">
+            Email: 
+            <span id="email-value" style="display:none; font-weight: normal;font-size: 0.8rem;font-weight: bold;">
+              bhemagondanahallisp1@udayton.edu
+            </span>
+            <button class="btn btn-outline-primary btn-sm" style="margin-left: 10px;" onclick="toggleEmail()">
+              Show/Hide Email
+            </button>
+          </p>
+          
+          <!-- Contact details in bold -->
+          <p class="lead mb-1" style="font-weight: bold;font-size: 0.8rem;">Phone: (937) 241-0896</p>
+          <p class="lead" style="font-weight: bold;font-size: 0.8rem">Address: 903 Wilmington Ave 309, Dayton, Ohio, 45420, USA</p>
+        </div>
+      
+        <nav class="nav nav-pills flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link" href="#about">About</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#resume">Resume</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#contact">WAPH Course</a>
+          </nav>
+      
+        <!-- Removed Background section -->
+      
+      </div>
+      
+      <script>
+        function toggleEmail() {
+          const email = document.getElementById('email-value');
+          email.style.display = email.style.display === 'none' ? 'inline' : 'none';
+        }
+      </script>
+         
+      
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-  <div class="container">
-    <a class="navbar-brand" href="#">Praj</a>
+  <div class="text-center mb-4">
+    <h2>Welcome to My Professional Portfolio</h2>
+    <p class="lead">
+      I'm Prajwal Bhemagondanahalli Srinivas, a passionate cybersecurity specialist and web developer. 
+      With a strong foundation in computer science and real-world experience from IBM and outdoor leadership, 
+      I blend technology with teamwork to solve complex problems and build secure digital solutions.
+    </p>
   </div>
-</nav>
-
-<div class="container">
   <div class="text-center mb-5">
-    <img src="https://github.com/AlpinistTech/Waph-AlpinistTech.github.io/blob/124e86888039aa0358496b4fdf390e1afe2c6102/Images/headshot.JPG" alt="Headshot" class="profile-pic mb-3">
-    <h1 class="display-5">Praj</h1>
-    <p class="lead">Cybersecurity Enthusiast | Web Developer | Grad Student</p>
-  </div>
-
-  <nav class="nav nav-pills flex-column flex-sm-row mb-4">
-    <a class="flex-sm-fill text-sm-center nav-link active" href="#about">About</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="#resume">Resume</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="#contact">Contact</a>
-  </nav>
-
-  <section id="about" class="mb-5">
-    <div class="row">
-      <div class="col-md-6">
-        <h3>Contact Info</h3>
-        <p id="email">Email: <span id="email-value" style="display:none;">bhemagondanahallisp1@udayton.edu</span>
-          <button class="btn btn-outline-primary btn-sm" onclick="toggleEmail()">Show/Hide Email</button></p>
-        <p>Phone: (937) 241-0896</p>
+    <h3 class="mb-3">Quote of the Day</h3>
+    <div id="quote-of-the-day" style="font-style: italic; font-size: 1.2rem;"></div>
+    <div class="text-center mb-5" style="background-color: #35ad49; padding: 1rem; border-radius: 8px; color: white;">
+        <blockquote class="blockquote" style="background-color: transparent; padding: 0; margin: 0; border: none;">
+          <p class="mb-1" style="margin-bottom: 0;">
+            "Success is not final, failure is not fatal: It is the courage to continue that counts." — <strong>Winston Churchill</strong>
+          </p>
+        </blockquote>
       </div>
-      <div class="col-md-6">
-        <h3>Background</h3>
-        <ul>
-          <li>Bachelor's in Computer Science</li>
-          <li>Experience with HTML, CSS, JS, Python</li>
-          <li>Focus: Web Security, Cloud Computing</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+      
+  
 
   <section id="resume" class="mb-5">
     <h3>Resume</h3>
+
     <div class="card mb-3">
       <div class="card-header bg-primary text-white">Education</div>
       <div class="card-body">
-        <p><strong>Bachelor's in Computer Science</strong><br>XYZ University, 2021 - 2025</p>
+        <p><strong>MS, Computer Science</strong><br>University of Dayton</p>
+        <p><strong>BE, Computer Science Engineering</strong><br>BTL Institute of Technology, India</p>
       </div>
     </div>
+
     <div class="card mb-3">
       <div class="card-header bg-success text-white">Experience</div>
       <div class="card-body">
         <ul>
-          <li><strong>Web Developer Intern</strong> - ABC Corp (Summer 2024)</li>
-          <li>Built responsive websites using HTML, CSS, Bootstrap, and JavaScript</li>
+          <li><strong>Cyber Security Specialist</strong> – IBM (June 2022 – Dec 2024)</li>
+          <li><strong>Project Coordinator</strong> – Miles to Trek (Mar 2020 – May 2022)</li>
         </ul>
       </div>
     </div>
+
     <div class="card mb-3">
       <div class="card-header bg-warning text-dark">Skills</div>
       <div class="card-body">
-        <p>HTML, CSS, JavaScript, Python, Bootstrap, Linux, Git, Cybersecurity</p>
+        <p>Cybersecurity, IBM QRadar, Defender, Sentinel, FireEye, Linux, Git, Event Management, Vendor Management</p>
+        <p>Languages: English, Hindi, Kannada</p>
       </div>
     </div>
+
     <div class="card mb-3">
-      <div class="card-header bg-info text-white">Projects</div>
+      <div class="card-header bg-info text-white">Certifications</div>
       <div class="card-body">
         <ul>
-          <li><strong>Portfolio Website</strong> - This current site!</li>
-          <li><strong>Secure Login App</strong> - Developed a basic login system with input validation and hashing</li>
+          <li>National Cyber League – Spring 2025</li>
+          <li>IBM Security Technical Sales (QRadar) – 2024</li>
+          <li>Think Like a Hacker – 2024</li>
+          <li>AWS Security – 2023</li>
+          <li>Cybersecurity & Data Privacy Annual Education – 2023</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-light text-dark">Leadership & Volunteering</div>
+      <div class="card-body">
+        <ul>
+          <li>Led 3000+ hikers in India; Certified mountaineer (Indian Army - JIM)</li>
+          <li>COVID-19 Relief Work & NGO Support</li>
+          <li>Student Coordinator and Event Organizer (IBM)</li>
+          <li>Traffic Warden – Govt. of Karnataka</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-dark text-white">Hobbies & Interests</div>
+      <div class="card-body">
+        <ul>
+          <li>Outdoor leadership & mountaineering</li>
+          <li>Half-marathoner; promotes health and safety</li>
+          <li>Volunteer for public safety and animal welfare</li>
         </ul>
       </div>
     </div>
   </section>
-
-  <section class="row mb-5">
-    <div class="col-md-6">
-      <h4>Digital Clock</h4>
-      <div id="digital-clock" class="fs-4"></div>
+  <section class="d-flex justify-content-between align-items-start flex-wrap mb-5">
+    <div class="p-2 text-start" style="min-width: 150px; margin-left: 100px;">
+      <h5>Digital Clock</h5>
+      <div id="digital-clock" class="fs-6">Current time: 00:00:00</div>
     </div>
-    <div class="col-md-6">
-      <h4>Analog Clock</h4>
-      <canvas id="analog-clock" width="150" height="150" style="background-color: #999;"></canvas>
+    
+    <div class="p-2 text-end" style="min-width: 150px; margin-right: 250px;">
+      <h5>Analog Clock</h5>
+      <canvas id="analog-clock" width="150" height="150" style="background-color: transparent;"></canvas>
     </div>
   </section>
-
+  
+  
+  
   <section class="mb-5">
     <h4>Joke of the Minute</h4>
     <p id="joke" class="alert alert-secondary"></p>
   </section>
 
-  <section class="mb-5">
-    <h4>Random Comic</h4>
-    <img id="comic" src="" alt="Comic" class="img-fluid rounded shadow-sm">
-  </section>
-
   <section id="contact" class="text-center">
-    <a href="waph.html" class="btn btn-success">Learn about the WAPH Course</a>
+    <a href="waph.html" class="btn btn-success">Learn about the Web App Programming & Hacking Course</a>
   </section>
 
-  <footer class="mt-5">
-    <p class="mb-1">&copy; 2025 Prajwal B S | Last updated: <script>document.write(new Date().toLocaleDateString());</script></p>
+  <footer class="mt-5" style="background-color: transparent;">
+    <p class="mb-1">&copy; 2025 PRAJ | Last updated: <script>document.write(new Date().toLocaleDateString());</script></p>
     <img src="https://s11.flagcounter.com/count2/yourflagcode/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter">
-  </footer>
-</div>
+  </footer>  
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://waph-Phung.github.io/clock.js"></script>
@@ -147,20 +203,31 @@
     email.style.display = email.style.display === 'none' ? 'inline' : 'none';
   }
 
-  function updateDigitalClock() {
-    document.getElementById("digital-clock").innerText = new Date().toLocaleTimeString();
+  function displayTime() {
+    document.getElementById('digital-clock').innerHTML = "Current time: " + new Date();
   }
-  setInterval(updateDigitalClock, 1000);
-  updateDigitalClock();
+  setInterval(displayTime, 500);
+  displayTime();
+</script>
 
-  function setupAnalogClock() {
-    const canvas = document.getElementById("analog-clock");
-    const ctx = canvas.getContext("2d");
-    let radius = canvas.height / 2;
-    ctx.translate(radius, radius);
-    radius *= 0.90;
-    setInterval(() => drawClock(ctx, radius), 1000);
-  }
+</script>
+<script src="https://waph-Phung.github.io/clock.js"></script>
+<script>
+  window.onload = function () {
+		var canvas = document.getElementById("analog-clock");
+		var ctx = canvas.getContext("2d");
+		var radius = canvas.height / 2;
+		ctx.translate(radius, radius);
+		radius = radius * 0.90;
+
+		setInterval(drawClock, 1000);
+
+		function drawClock() {
+			drawFace(ctx, radius);
+			drawNumbers(ctx, radius);
+			drawTime(ctx, radius);
+		}
+	};
 
   function loadJoke() {
     $.get("https://v2.jokeapi.dev/joke/Any?type=single", function(data) {
@@ -169,13 +236,6 @@
   }
   setInterval(loadJoke, 60000);
   loadJoke();
-
-  fetch("https://xkcd.now.sh/?comic=latest")
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("comic").src = data.img;
-      document.getElementById("comic").alt = data.title;
-    });
 
   function setupCookieMessage() {
     const lastVisit = getCookie("lastVisit");
