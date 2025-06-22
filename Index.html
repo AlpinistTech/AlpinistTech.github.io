@@ -13,9 +13,6 @@
   <!-- Analog Clock Library -->
   <script src="https://waph-Phung.github.io/clock.js"></script>
 
-  <!-- Flag Counter (tracker) -->
-  <script type="text/javascript" src="https://cdn.flagcounter.com/count/yourflag.js"></script>
-
   <style>
     #analog-clock {
       background-color: #999;
@@ -24,6 +21,12 @@
       width: 150px;
       height: 150px;
       border-radius: 50%;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 10px 0;
+      background: #f1f1f1;
+      text-align: center;
     }
   </style>
 </head>
@@ -40,9 +43,9 @@
     <div class="col-md-6">
       <h3>Contact Info</h3>
       <p id="email">Email: <span id="email-value" style="display:none;">prajwal@example.com</span>
-        <button onclick="toggleEmail()">Show/Hide Email</button></p>
+        <button class="btn btn-primary btn-sm" onclick="toggleEmail()">Show/Hide Email</button></p>
       <p>Phone: (123) 456-7890</p>
-      <p><a href="resume.pdf" target="_blank">View My Resume</a></p>
+      <p><a href="resume.pdf" target="_blank" class="btn btn-info btn-sm">View My Resume</a></p>
     </div>
 
     <div class="col-md-6">
@@ -57,23 +60,34 @@
 
   <hr>
 
-  <h3>Digital Clock</h3>
-  <div id="digital-clock"></div>
-
-  <h3>Analog Clock</h3>
-  <canvas id="analog-clock" width="150" height="150"></canvas>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Digital Clock</h3>
+      <div id="digital-clock" class="lead"></div>
+    </div>
+    <div class="col-md-6">
+      <h3>Analog Clock</h3>
+      <canvas id="analog-clock" width="150" height="150"></canvas>
+    </div>
+  </div>
 
   <hr>
 
   <h3>Joke of the Minute</h3>
-  <p id="joke"></p>
+  <p id="joke" class="well"></p>
 
   <h3>Random Comic</h3>
-  <img id="comic" src="" alt="Comic" style="max-width:100%;">
+  <img id="comic" src="" alt="Comic" class="img-responsive img-thumbnail">
 
   <hr>
 
-  <a href="waph.html">Learn about the WAPH Course</a>
+  <a href="waph.html" class="btn btn-success">Learn about the WAPH Course</a>
+
+  <footer>
+    <p>&copy; 2025 Prajwal B S | Last updated: <script>document.write(new Date().toLocaleDateString());</script></p>
+    <!-- FlagCounter embed (replace with your actual embed code from flagcounter.com) -->
+    <img src="https://s11.flagcounter.com/count2/yourflagcode/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter">
+  </footer>
 </div>
 
 <script>
