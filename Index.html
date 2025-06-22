@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prajwal B S - Professional Profile</title>
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://www.w3schools.com/bootstrap/bootstrap_theme_me.asp">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <!-- Analog Clock Library -->
   <script src="https://waph-Phung.github.io/clock.js"></script>
@@ -32,20 +32,20 @@
 </head>
 <body onload="setupPage()">
 
-<div class="container">
-  <div class="jumbotron text-center">
-    <h1>Prajwal B S</h1>
-    <img src="images/headshot.jpg" alt="Headshot" class="profile-pic">
-    <p>Cybersecurity Enthusiast | Web Developer | Student</p>
+<div class="container py-4">
+  <div class="text-center mb-5">
+    <h1 class="display-4">Prajwal B S</h1>
+    <img src="images/headshot.jpg" alt="Headshot" class="profile-pic mb-3">
+    <p class="lead">Cybersecurity Enthusiast | Web Developer | Student</p>
   </div>
 
-  <div class="row">
+  <div class="row mb-4">
     <div class="col-md-6">
       <h3>Contact Info</h3>
       <p id="email">Email: <span id="email-value" style="display:none;">prajwal@example.com</span>
-        <button class="btn btn-primary btn-sm" onclick="toggleEmail()">Show/Hide Email</button></p>
+        <button class="btn btn-outline-primary btn-sm" onclick="toggleEmail()">Show/Hide Email</button></p>
       <p>Phone: (123) 456-7890</p>
-      <p><a href="resume.pdf" target="_blank" class="btn btn-info btn-sm">View My Resume</a></p>
+      <a href="resume.pdf" target="_blank" class="btn btn-info btn-sm">View My Resume</a>
     </div>
 
     <div class="col-md-6">
@@ -58,34 +58,33 @@
     </div>
   </div>
 
-  <hr>
-
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-md-6">
-      <h3>Digital Clock</h3>
-      <div id="digital-clock" class="lead"></div>
+      <h4>Digital Clock</h4>
+      <div id="digital-clock" class="fs-4"></div>
     </div>
     <div class="col-md-6">
-      <h3>Analog Clock</h3>
+      <h4>Analog Clock</h4>
       <canvas id="analog-clock" width="150" height="150"></canvas>
     </div>
   </div>
 
-  <hr>
+  <div class="mb-4">
+    <h4>Joke of the Minute</h4>
+    <p id="joke" class="alert alert-secondary"></p>
+  </div>
 
-  <h3>Joke of the Minute</h3>
-  <p id="joke" class="well"></p>
+  <div class="mb-4">
+    <h4>Random Comic</h4>
+    <img id="comic" src="" alt="Comic" class="img-fluid rounded shadow-sm">
+  </div>
 
-  <h3>Random Comic</h3>
-  <img id="comic" src="" alt="Comic" class="img-responsive img-thumbnail">
+  <div class="text-center">
+    <a href="waph.html" class="btn btn-success">Learn about the WAPH Course</a>
+  </div>
 
-  <hr>
-
-  <a href="waph.html" class="btn btn-success">Learn about the WAPH Course</a>
-
-  <footer>
-    <p>&copy; 2025 Prajwal B S | Last updated: <script>document.write(new Date().toLocaleDateString());</script></p>
-    <!-- FlagCounter embed (replace with your actual embed code from flagcounter.com) -->
+  <footer class="mt-5">
+    <p class="mb-1">&copy; 2025 Prajwal B S | Last updated: <script>document.write(new Date().toLocaleDateString());</script></p>
     <img src="https://s11.flagcounter.com/count2/yourflagcode/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter">
   </footer>
 </div>
