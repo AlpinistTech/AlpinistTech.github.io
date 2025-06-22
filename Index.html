@@ -3,19 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prajwal B S - Professional Profile</title>
+  <title>Prajwal B S - Portfolio</title>
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <!-- Analog Clock Library -->
-  <script src="https://waph-Phung.github.io/clock.js"></script>
 
   <style>
-    #analog-clock {
-      background-color: #999;
+    body {
+      background-color: #f8f9fa;
     }
     .profile-pic {
       width: 150px;
@@ -32,56 +28,102 @@
 </head>
 <body onload="setupPage()">
 
-<div class="container py-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="#">Prajwal B S</a>
+  </div>
+</nav>
+
+<div class="container">
   <div class="text-center mb-5">
-    <h1 class="display-4">Prajwal B S</h1>
     <img src="images/headshot.jpg" alt="Headshot" class="profile-pic mb-3">
+    <h1 class="display-5">Prajwal B S</h1>
     <p class="lead">Cybersecurity Enthusiast | Web Developer | Student</p>
   </div>
 
-  <div class="row mb-4">
-    <div class="col-md-6">
-      <h3>Contact Info</h3>
-      <p id="email">Email: <span id="email-value" style="display:none;">prajwal@example.com</span>
-        <button class="btn btn-outline-primary btn-sm" onclick="toggleEmail()">Show/Hide Email</button></p>
-      <p>Phone: (123) 456-7890</p>
-      <a href="resume.pdf" target="_blank" class="btn btn-info btn-sm">View My Resume</a>
-    </div>
+  <nav class="nav nav-pills flex-column flex-sm-row mb-4">
+    <a class="flex-sm-fill text-sm-center nav-link active" href="#about">About</a>
+    <a class="flex-sm-fill text-sm-center nav-link" href="#resume">Resume</a>
+    <a class="flex-sm-fill text-sm-center nav-link" href="#contact">Contact</a>
+  </nav>
 
-    <div class="col-md-6">
-      <h3>Background</h3>
-      <ul>
-        <li>Bachelor's in Computer Science</li>
-        <li>Experience with HTML, CSS, JS, Python</li>
-        <li>Focus: Web Security, Cloud Computing</li>
-      </ul>
+  <section id="about" class="mb-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Contact Info</h3>
+        <p id="email">Email: <span id="email-value" style="display:none;">prajwal@example.com</span>
+          <button class="btn btn-outline-primary btn-sm" onclick="toggleEmail()">Show/Hide Email</button></p>
+        <p>Phone: (123) 456-7890</p>
+      </div>
+      <div class="col-md-6">
+        <h3>Background</h3>
+        <ul>
+          <li>Bachelor's in Computer Science</li>
+          <li>Experience with HTML, CSS, JS, Python</li>
+          <li>Focus: Web Security, Cloud Computing</li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="row mb-5">
+  <section id="resume" class="mb-5">
+    <h3>Resume</h3>
+    <div class="card mb-3">
+      <div class="card-header bg-primary text-white">Education</div>
+      <div class="card-body">
+        <p><strong>Bachelor's in Computer Science</strong><br>XYZ University, 2021 - 2025</p>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-header bg-success text-white">Experience</div>
+      <div class="card-body">
+        <ul>
+          <li><strong>Web Developer Intern</strong> - ABC Corp (Summer 2024)</li>
+          <li>Built responsive websites using HTML, CSS, Bootstrap, and JavaScript</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-header bg-warning text-dark">Skills</div>
+      <div class="card-body">
+        <p>HTML, CSS, JavaScript, Python, Bootstrap, Linux, Git, Cybersecurity</p>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-header bg-info text-white">Projects</div>
+      <div class="card-body">
+        <ul>
+          <li><strong>Portfolio Website</strong> - This current site!</li>
+          <li><strong>Secure Login App</strong> - Developed a basic login system with input validation and hashing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="row mb-5">
     <div class="col-md-6">
       <h4>Digital Clock</h4>
       <div id="digital-clock" class="fs-4"></div>
     </div>
     <div class="col-md-6">
       <h4>Analog Clock</h4>
-      <canvas id="analog-clock" width="150" height="150"></canvas>
+      <canvas id="analog-clock" width="150" height="150" style="background-color: #999;"></canvas>
     </div>
-  </div>
+  </section>
 
-  <div class="mb-4">
+  <section class="mb-5">
     <h4>Joke of the Minute</h4>
     <p id="joke" class="alert alert-secondary"></p>
-  </div>
+  </section>
 
-  <div class="mb-4">
+  <section class="mb-5">
     <h4>Random Comic</h4>
     <img id="comic" src="" alt="Comic" class="img-fluid rounded shadow-sm">
-  </div>
+  </section>
 
-  <div class="text-center">
+  <section id="contact" class="text-center">
     <a href="waph.html" class="btn btn-success">Learn about the WAPH Course</a>
-  </div>
+  </section>
 
   <footer class="mt-5">
     <p class="mb-1">&copy; 2025 Prajwal B S | Last updated: <script>document.write(new Date().toLocaleDateString());</script></p>
@@ -89,6 +131,8 @@
   </footer>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://waph-Phung.github.io/clock.js"></script>
 <script>
   function toggleEmail() {
     const email = document.getElementById('email-value');
@@ -102,11 +146,11 @@
   updateDigitalClock();
 
   function setupAnalogClock() {
-    var canvas = document.getElementById("analog-clock");
-    var ctx = canvas.getContext("2d");
-    var radius = canvas.height / 2;
+    const canvas = document.getElementById("analog-clock");
+    const ctx = canvas.getContext("2d");
+    let radius = canvas.height / 2;
     ctx.translate(radius, radius);
-    radius = radius * 0.90;
+    radius *= 0.90;
     setInterval(() => drawClock(ctx, radius), 1000);
   }
 
