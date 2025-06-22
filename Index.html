@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prajwal B S - Professional Profile</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Analog Clock Library -->
+  <script src="https://waph-Phung.github.io/clock.js"></script>
+
+  <!-- Flag Counter (tracker) -->
+  <script type="text/javascript" src="https://cdn.flagcounter.com/count/yourflag.js"></script>
+
+  <style>
+    #analog-clock {
+      background-color: #999;
+    }
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body onload="setupPage()">
+
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Prajwal B S</h1>
+    <img src="images/headshot.jpg" alt="Headshot" class="profile-pic">
+    <p>Cybersecurity Enthusiast | Web Developer | Student</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Contact Info</h3>
+      <p id="email">Email: <span id="email-value" style="display:none;">prajwal@example.com</span>
+        <button onclick="toggleEmail()">Show/Hide Email</button></p>
+      <p>Phone: (123) 456-7890</p>
+      <p><a href="resume.pdf" target="_blank">View My Resume</a></p>
+    </div>
+
+    <div class="col-md-6">
+      <h3>Background</h3>
+      <ul>
+        <li>Bachelor's in Computer Science</li>
+        <li>Experience with HTML, CSS, JS, Python</li>
+        <li>Focus: Web Security, Cloud Computing</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <h3>Digital Clock</h3>
+  <div id="digital-clock"></div>
+
+  <h3>Analog Clock</h3>
+  <canvas id="analog-clock" width="150" height="150"></canvas>
+
+  <hr>
+
+  <h3>Joke of the Minute</h3>
+  <p id="joke"></p>
+
+  <h3>Random Comic</h3>
+  <img id="comic" src="" alt="Comic" style="max-width:100%;">
+
+  <hr>
+
+  <a href="waph.html">Learn about the WAPH Course</a>
+</div>
+
+<script>
+  function toggleEmail() {
+    const email = document.getElementById('email-value');
+    email.style.display = email.style.display === 'none' ? 'inline' : 'none';
+  }
+
+  function updateDigitalClock() {
+    document.getElementById("digital-clock").innerText = new Date().toLocaleTimeString();
+  }
+  setInterval(updateDigitalClock, 1000);
+  updateDigitalClock();
+
+  function setupAnalogClock() {
+    var canvas = document.getElementById("analog-clock");
+    var ctx = canvas.getContext("2d");
+    var radius = canvas.height / 2;
+    ctx.translate(radius, radius);
+    radius = radius * 0.90;
+    setInterval(() => drawClock(ctx, radius), 1000);
+  }
+
+  function loadJoke() {
+    $.get("https://v2.jokeapi.dev/joke/Any?type=single", function(data) {
+      $("#joke").text(data.joke);
+    });
+  }
+  setInterval(loadJoke, 60000);
+  loadJoke();
+
+  fetch("https://xkcd.now.sh/?comic=latest")
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("comic").src = data.img;
+      document.getElementById("comic").alt = data.title;
+    });
+
+  function setupCookieMessage() {
+    const lastVisit = getCookie("lastVisit");
+    const now = new Date().toLocaleString();
+    if (!lastVisit) {
+      alert("Welcome to my homepage for the first time!");
+    } else {
+      alert("Welcome back! Your last visit was " + lastVisit);
+    }
+    document.cookie = "lastVisit=" + now + ";path=/";
+  }
+
+  function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  function setupPage() {
+    setupAnalogClock();
+    setupCookieMessage();
+  }
+</script>
+</body>
+</html>
