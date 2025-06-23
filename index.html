@@ -108,7 +108,10 @@
         </blockquote>
       </div>
       
-  
+  <div id="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background-color: #333; color: white; padding: 15px; text-align: center; display: none; z-index: 1000;">
+  This website uses cookies to enhance your experience. By continuing, you accept all cookies.
+  <button id="accept-cookies" class="btn btn-light btn-sm ms-3">Accept All Cookies</button>
+</div>
 
   <section id="resume" class="mb-5">
     <h3>Resume</h3>
@@ -313,6 +316,30 @@
   }
 
   loadRandomXkcd();
+
+function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setDate(expires.getDate() + days);
+    document.cookie = name + "=" + value + ";expires=" + expires.toUTCString() + ";path=/";
+  }
+
+  function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
+  // Show banner if cookie not set
+  window.onload = function () {
+    if (!getCookie("cookiesAccepted")) {
+      document.getElementById("cookie-banner").style.display = "block";
+    }
+
+    document.getElementById("accept-cookies").onclick = function () {
+      setCookie("cookiesAccepted", "true", 365);
+      document.getElementById("cookie-banner").style.display = "none";
+    };
+  };
 </script>
 </body>
 </html>
