@@ -178,6 +178,13 @@
         </ul>
       </div>
     </div>
+
+    <div class="text-center mb-5">
+        <h4>Feeling stressed? Here's a cat 😸</h4>
+        <img id="cat-img" src="" style="max-width: 100%; height: auto;">
+        <br><button class="btn btn-warning mt-2" onclick="loadCat()">Show Me Another Cat</button>
+      </div>
+
   </section>
 	  
   <section class="d-flex justify-content-between align-items-start flex-wrap mb-5">
@@ -323,6 +330,20 @@
     };
   }
 
+  function loadCat() {
+  fetch("https://api.thecatapi.com/v1/images/search")
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("cat-img").src = data[0].url;
+    })
+    .catch(error => {
+      document.getElementById("cat-img").alt = "Couldn't load cat :(";
+    });
+}
+window.onload = function () {
+  loadCat();
+};
+
   // On page load: initialize everything
   window.onload = function () {
     setupAnalogClock();
@@ -330,6 +351,7 @@
     loadJoke();
     loadRandomXkcd();
     setupCookieBanner();
+    loadCat();
   };
 </script>
 </body>
