@@ -194,9 +194,20 @@
     <p id="joke" class="alert alert-secondary"></p>
   </section>
 
+  <section id="xkcd-container" class="text-center mb-5">
+    <h3>Random XKCD Comic</h3>
+    <img id="xkcd-img" src="" alt="Loading XKCD Comic..." style="max-width: 100%; height: auto;">
+    <p id="xkcd-title" style="font-weight: bold;"></p>
+  </section>
+
   <section id="contact" class="text-center">
     <a href="waph.html" class="btn btn-success">Learn about the Web App Programming & Hacking Course</a>
   </section>
+
+  <div id="weather">
+    <h2>Current Weather in Dayton</h2>
+    <div id="weather-info">Loading weather data...</div>
+  </div>
 
   <footer class="mt-5" style="background-color: transparent;">
     <p class="mb-1">&copy; 2025 PRAJ | Last updated: <script>document.write(new Date().toLocaleDateString());</script></p>
@@ -245,27 +256,101 @@
   setInterval(loadJoke, 60000);
   loadJoke();
 
+  function setupPage() {
+    setupAnalogClock(); // if you use this
+    setupCookieMessage(); // <- this is what makes the welcome work
+  }
+
   function setupCookieMessage() {
     const lastVisit = getCookie("lastVisit");
     const now = new Date().toLocaleString();
+
     if (!lastVisit) {
-      alert("Welcome to my homepage for the first time!");
+      alert("Welcome to my homepage!");
     } else {
       alert("Welcome back! Your last visit was " + lastVisit);
     }
-    document.cookie = "lastVisit=" + now + ";path=/";
+
+    // Set cookie to remember the visit (valid for 1 year)
+    const expires = new Date();
+    expires.setFullYear(expires.getFullYear() + 1);
+    document.cookie = "lastVisit=" + now + ";expires=" + expires.toUTCString() + ";path=/";
   }
 
   function getCookie(name) {
     const value = "; " + document.cookie;
     const parts = value.split("; " + name + "=");
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
   function setupPage() {
     setupAnalogClock();
     setupCookieMessage();
   }
+
+  async function loadRandomXkcd() {
+    const proxyUrl = 'https://api.allorigins.win/raw?url=';
+    const latestUrl = 'https://xkcd.com/info.0.json';
+
+    try {
+      // 1. Get latest comic number
+      const latestResponse = await fetch(proxyUrl + encodeURIComponent(latestUrl));
+      if (!latestResponse.ok) throw new Error("Failed to fetch latest comic info");
+      const latestData = await latestResponse.json();
+      const maxNum = latestData.num;
+
+      // 2. Pick random comic number between 1 and maxNum
+      const randomNum = Math.floor(Math.random() * maxNum) + 1;
+
+      // 3. Fetch random comic info
+      const randomUrl = `https://xkcd.com/${randomNum}/info.0.json`;
+      const randomResponse = await fetch(proxyUrl + encodeURIComponent(randomUrl));
+      if (!randomResponse.ok) throw new Error("Failed to fetch random comic");
+      const randomData = await randomResponse.json();
+
+      // 4. Update DOM
+      document.getElementById("xkcd-img").src = randomData.img;
+      document.getElementById("xkcd-img").alt = randomData.alt;
+      document.getElementById("xkcd-title").textContent = `${randomData.num}: ${randomData.title}`;
+
+    } catch (error) {
+      console.error("Error loading XKCD comic:", error);
+      document.getElementById("xkcd-title").textContent = "Failed to load comic.";
+    }
+  }
+
+  loadRandomXkcd();
+
+  aasync function loadWeather() {
+      const apiKey = "YOUR_API_KEY_HERE"; // <-- Replace with your OpenWeatherMap API key
+      const city = "Dayton,us";
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Network response was not ok");
+
+        const data = await response.json();
+
+        const temp = data.main.temp.toFixed(1);
+        const desc = data.weather[0].description;
+        const humidity = data.main.humidity;
+        const wind = data.wind.speed;
+
+        document.getElementById("weather-info").innerHTML = `
+          <p><strong>Temperature:</strong> ${temp} °F</p>
+          <p><strong>Condition:</strong> ${desc.charAt(0).toUpperCase() + desc.slice(1)}</p>
+          <p><strong>Humidity:</strong> ${humidity}%</p>
+          <p><strong>Wind Speed:</strong> ${wind} mph</p>
+          <p><em>Last updated: ${new Date().toLocaleTimeString()}</em></p>
+        `;
+      } catch (error) {
+        document.getElementById("weather-info").textContent = "Unable to load weather data.";
+        console.error("Error loading weather:", error);
+      }
+    }
+
+    window.onload = loadWeather;
 </script>
 </body>
 </html>
