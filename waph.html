@@ -1,42 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>My WAPH Page</title>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-	<link rel="stylesheet" href="https://waph-phung.github.io/style2.css">
-	<style>
-		.button {
-	background-color: #4CAF50;  
-	border: none;
-	color: white;  
-	padding: 5px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 12px;
-	margin: 4px 2px;
-	cursor: pointer;
-}
-
-.round {
-	border-radius: 8px; 
-}
-
-#response {
-	background-color: #ff9800; 
-}
-
-	</style>
-
+  <meta charset="UTF-8" />
+  <title>My WAPH Page</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="https://waph-phung.github.io/style2.css" />
+  <style>
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 5px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 12px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .round {
+      border-radius: 8px;
+    }
+    #response {
+      background-color: #ff9800;
+    }
+    /* New overview styling */
+    #overview {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+    }
+    #overview h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    #overview section {
+      margin-bottom: 25px;
+    }
+    #overview h3 {
+      color: #2980b9;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #2980b9;
+      padding-bottom: 5px;
+    }
+    #overview p {
+      line-height: 1.5;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
-	<div id="top">
-		<h1>Web Application Programming and Hacking</h1>
-		<h2>Front-End Web Development Lab</h2>
-		<h3>Instructor: Dr. Phu Phung</h3>
-		<p><b>Name:</b> <i>PRAJ</i></p>
-		<img src="https://github.com/AlpinistTech/Waph-AlpinistTech.github.io/blob/df8706d6f93e3df48134a4411ebfb0d3389e0ef3/Images/headshot.JPG" alt="My headshot" width="50">
-	</div>
+  <div id="top">
+    <h1>Web Application Programming and Hacking</h1>
+    <h2>Front-End Web Development Lab</h2>
+    <h3>Instructor: Dr. Phu Phung</h3>
+    <p><b>Name:</b> <i>PRAJ</i></p>
+    <img src="https://github.com/AlpinistTech/Waph-AlpinistTech.github.io/blob/df8706d6f93e3df48134a4411ebfb0d3389e0ef3/Images/headshot.JPG" alt="My headshot" width="50" />
+  </div>
+
+  <div id="overview">
+    <h2>Course Overview</h2>
+
+    <section id="lab0">
+      <h3>Lab 0</h3>
+      <p>
+        This Lab focuses on setting up a development environment using Ubuntu 22.04 as a Virtual machine.
+        The main focus was to install essential software such as apache web server, Git and necessary tools for the web development.
+        The Lab covers working with Github repositories where we work on cloning, editing, committing and pushing changes.
+        The purpose of this lab is to prepare a solid foundation for web application programming and hacking activities throughout the course.
+      </p>
+    </section>
+
+    <section id="lab1">
+      <h3>Lab 1</h3>
+      <p>
+        Overview:<br />
+        Lab 1 focused on foundational concepts of the web specifically the HTTP protocol and basic web application programming.
+        It was divided into two main parts:
+      </p>
+      <ol>
+        <li>
+          <b>Web and HTTP Protocol</b><br />
+          Hands-on activities involved using Wireshark to capture and analyze HTTP traffic and Telnet to manually send HTTP requests.
+          This section aimed to thoroughly understand how HTTP requests and responses work at the packet level.
+        </li>
+        <li>
+          <b>Basic web application programming</b><br />
+          Introducing web application development using CGI with C programming and basics of PHP for developing simple web applications that handle user input.
+        </li>
+      </ol>
+    </section>
+
+    <section id="lab2">
+      <h3>Lab 2</h3>
+      <p>
+        Overview:<br />
+        In Lab 2, the lecture introduced front-end web development using HTML and JavaScript.
+        It includes concepts, hands-on exercises, and a lab focused on creating a simple dynamic webpage.
+        Key topics covered:
+      </p>
+      <ol>
+        <li>Basic HTML tags to create and deploy simple static HTML pages.</li>
+        <li>Adding images and forms with GET and POST methods.</li>
+        <li>Introduction to client-side JavaScript and its role in dynamic web pages, including inline JavaScript.</li>
+        <li>Hands-on experience with Lab 2.1 and Lab 2.2.</li>
+      </ol>
+    </section>
+
+    <section id="hackathon1">
+      <h3>Hackathon 1</h3>
+      <p>
+        In this hackathon, I explored multiple levels of reflected cross-site scripting (XSS) attacks on a simulated vulnerable web application,
+        followed by implementing defense mechanisms through input validation and output encoding.
+        This hands-on experience increased my understanding of both exploiting and mitigating XSS vulnerabilities.
+        Key outcomes included successful script injections displaying my name with alert(), identifying vulnerable backend PHP code,
+        and applying proper data sanitization to secure the application.
+      </p>
+      <p>
+        This hackathon highlighted the importance of secure coding practices, especially in handling untrusted inputs.
+        By performing real XSS attacks and then fixing the vulnerabilities, I better understood how small oversights can lead to major security breaches.
+        Techniques like <code>htmlentities()</code> in PHP and frontend validation/encoding strengthened the security posture of the app.
+      </p>
+    </section>
+
+    <section id="project1">
+      <h3>Individual Project 1</h3>
+      <p>
+        <!-- You can add your own detailed description here. Example: -->
+        This individual project involves designing and implementing a secure and functional web application that demonstrates key skills learned throughout the course.
+        It integrates concepts from labs and hackathons, including secure coding, front-end development, and back-end integration.
+        The project showcases my understanding of web technologies, security best practices, and real-world application development.
+      </p>
+    </section>
+  </div>
 </body>
 </html>
