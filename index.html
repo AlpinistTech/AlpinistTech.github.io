@@ -216,51 +216,51 @@
   </footer>  
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://waph-Phung.github.io/clock.js"></script>
 <script>
+  // Toggle email display
   function toggleEmail() {
     const email = document.getElementById('email-value');
     email.style.display = email.style.display === 'none' ? 'inline' : 'none';
   }
 
+  // Digital clock display
   function displayTime() {
-    document.getElementById('digital-clock').innerHTML = "Current time: " + new Date();
+    document.getElementById('digital-clock').innerHTML = "Current time: " + new Date().toLocaleTimeString();
   }
-  setInterval(displayTime, 500);
+  setInterval(displayTime, 1000);
   displayTime();
-</script>
 
-</script>
-<script src="https://waph-Phung.github.io/clock.js"></script>
-<script>
-  window.onload = function () {
+  // Analog clock setup using functions from clock.js
+  function setupAnalogClock() {
     var canvas = document.getElementById("analog-clock");
     var ctx = canvas.getContext("2d");
     var radius = canvas.height / 2;
     ctx.translate(radius, radius);
     radius = radius * 0.90;
 
-    setInterval(drawClock, 1000);
-
-    function drawClock() {
+    setInterval(() => {
       drawFace(ctx, radius);
       drawNumbers(ctx, radius);
       drawTime(ctx, radius);
-    }
-  };
-
-  function loadJoke() {
-    $.get("https://v2.jokeapi.dev/joke/Any?type=single", function(data) {
-      $("#joke").text(data.joke);
-    });
-  }
-  setInterval(loadJoke, 60000);
-  loadJoke();
-
-  function setupPage() {
-    setupAnalogClock(); // if you use this
-    setupCookieMessage(); // <- this is what makes the welcome work
+    }, 1000);
   }
 
+  // Cookie helper functions
+  function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setDate(expires.getDate() + days);
+    document.cookie = name + "=" + value + ";expires=" + expires.toUTCString() + ";path=/";
+  }
+
+  function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  }
+
+  // Setup welcome alert with last visit cookie
   function setupCookieMessage() {
     const lastVisit = getCookie("lastVisit");
     const now = new Date().toLocaleString();
@@ -277,64 +277,42 @@
     document.cookie = "lastVisit=" + now + ";expires=" + expires.toUTCString() + ";path=/";
   }
 
-  function getCookie(name) {
-    const value = "; " + document.cookie;
-    const parts = value.split("; " + name + "=");
-    if (parts.length === 2) return parts.pop().split(";").shift();
+  // Joke API fetch
+  function loadJoke() {
+    $.get("https://v2.jokeapi.dev/joke/Any?type=single", function(data) {
+      $("#joke").text(data.joke);
+    });
   }
+  setInterval(loadJoke, 60000);
 
-  function setupPage() {
-    setupAnalogClock();
-    setupCookieMessage();
-  }
-
+  // XKCD comic fetch
   async function loadRandomXkcd() {
     const proxyUrl = 'https://api.allorigins.win/raw?url=';
     const latestUrl = 'https://xkcd.com/info.0.json';
 
     try {
-      // 1. Get latest comic number
       const latestResponse = await fetch(proxyUrl + encodeURIComponent(latestUrl));
       if (!latestResponse.ok) throw new Error("Failed to fetch latest comic info");
       const latestData = await latestResponse.json();
       const maxNum = latestData.num;
 
-      // 2. Pick random comic number between 1 and maxNum
       const randomNum = Math.floor(Math.random() * maxNum) + 1;
-
-      // 3. Fetch random comic info
       const randomUrl = `https://xkcd.com/${randomNum}/info.0.json`;
       const randomResponse = await fetch(proxyUrl + encodeURIComponent(randomUrl));
       if (!randomResponse.ok) throw new Error("Failed to fetch random comic");
       const randomData = await randomResponse.json();
 
-      // 4. Update DOM
       document.getElementById("xkcd-img").src = randomData.img;
       document.getElementById("xkcd-img").alt = randomData.alt;
       document.getElementById("xkcd-title").textContent = `${randomData.num}: ${randomData.title}`;
-
     } catch (error) {
       console.error("Error loading XKCD comic:", error);
       document.getElementById("xkcd-title").textContent = "Failed to load comic.";
     }
   }
 
-  loadRandomXkcd();
-
-function setCookie(name, value, days) {
-    const expires = new Date();
-    expires.setDate(expires.getDate() + days);
-    document.cookie = name + "=" + value + ";expires=" + expires.toUTCString() + ";path=/";
-  }
-
-  function getCookie(name) {
-    const value = "; " + document.cookie;
-    const parts = value.split("; " + name + "=");
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  }
-
-  // Show banner if cookie not set
-  window.onload = function () {
+  // Cookie banner setup
+  function setupCookieBanner() {
     if (!getCookie("cookiesAccepted")) {
       document.getElementById("cookie-banner").style.display = "block";
     }
@@ -343,6 +321,16 @@ function setCookie(name, value, days) {
       setCookie("cookiesAccepted", "true", 365);
       document.getElementById("cookie-banner").style.display = "none";
     };
+  }
+
+  // On page load: initialize everything
+  window.onload = function () {
+    setupAnalogClock();
+    setupCookieMessage();
+    loadJoke();
+    loadRandomXkcd();
+    setupCookieBanner();
+  };
 </script>
 </body>
 </html>
